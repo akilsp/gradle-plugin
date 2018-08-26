@@ -1,0 +1,33 @@
+//This plugin will automatically apply the Java plugin and add the gradleApi() dependency to the compile configuration
+apply plugin: 'java-gradle-plugin'
+
+/*
+apply plugin: 'java'
+
+dependencies{
+    compile gradleApi()
+}
+*/
+
+apply plugin: 'maven-publish'
+
+repositories {
+    mavenLocal()
+}
+
+group = 'com.csc.plugin'
+version = '1.0.0'
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId "$group"
+            artifactId 'CustomGradlePlugin'
+            version "$version"
+            from components.java
+        }
+    }
+}
+
+
+
